@@ -27,9 +27,9 @@ services:
       - sp-net
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
   shinyproxy:
-    image: YOUR_USERNAME/shinyproxy-example
+    image: bwright1701/shinyproxy-example
     depends_on:
-      - euler
+      - trlaviz
     container_name: shinyproxy
     expose:
       - 8080
@@ -38,8 +38,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - sp-net
-  euler:
-    image: YOUR_USERNAME/shiny-euler-app
+  trlaviz:
+    image: bwright1701/shiny-trlaviz-app
 
 networks:
   sp-net:
